@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Tickr</string>
+    <string name="ChooseStock">Choose Stock:</string>
+    <string name="NumStock">Enter Number of Stock:</string>
+    <string-array name="DropDown">
+    <item>Apple</item>
+    <item>Microsoft</item>
+    <item>Amazon</item>
+    <item>Dell</item>
+    <item>Delta</item>
+    <item>Google</item>
+    <item>IBM</item>
+</string-array>
+</resources>
