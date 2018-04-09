@@ -1,0 +1,125 @@
+package com.example.charlie.tickr;
+
+import android.graphics.Color;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+
+
+//graphview libraries
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.helper.DateAsXAxisLabelFormatter;
+import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.LineGraphSeries;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+
+import lecho.lib.hellocharts.model.PieChartData;
+import lecho.lib.hellocharts.model.SliceValue;
+import lecho.lib.hellocharts.util.ChartUtils;
+import lecho.lib.hellocharts.view.PieChartView;
+
+
+public class Bank extends AppCompatActivity {
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_bank);
+
+        //temp dates, will pull from
+        // generate Dates
+        Calendar calendar = Calendar.getInstance();
+        Date d1 = calendar.getTime();
+        calendar.add(Calendar.DATE, 1);
+        Date d2 = calendar.getTime();
+        calendar.add(Calendar.DATE, 1);
+        Date d3 = calendar.getTime();
+        calendar.add(Calendar.DATE, 1);
+        Date d4 = calendar.getTime();
+        calendar.add(Calendar.DATE, 1);
+        Date d5 = calendar.getTime();
+        calendar.add(Calendar.DATE, 1);
+        Date d6 = calendar.getTime();
+        calendar.add(Calendar.DATE, 1);
+        Date d7 = calendar.getTime();
+
+        //Graph params
+        GraphView graph = (GraphView) findViewById(R.id.graph);
+        graph.setTitle("Test Title");
+        graph.getGridLabelRenderer().setHorizontalAxisTitle("Date");
+        graph.getGridLabelRenderer().setVerticalAxisTitle("Price");
+
+        // you can directly pass Date objects to DataPoint-Constructor
+        // this will convert the Date to double via Date#getTime()
+        LineGraphSeries<DataPoint> series1 = new LineGraphSeries<>(new DataPoint[] {
+                new DataPoint(d1, 1.5),
+                new DataPoint(d2, 5),
+                new DataPoint(d3, 3),
+                new DataPoint(d4, 4),
+                new DataPoint(d5, 5),
+                new DataPoint(d6, 1),
+                new DataPoint(d7, 5)
+        });
+
+        graph.addSeries(series1);
+        series1.setDrawDataPoints(true);
+        series1.setColor(Color.BLACK);
+
+        LineGraphSeries<DataPoint> series2 = new LineGraphSeries<>(new DataPoint[] {
+                new DataPoint(d1, 4),
+                new DataPoint(d2, 3),
+                new DataPoint(d3, 2),
+                new DataPoint(d4, 1),
+                new DataPoint(d5, 0),
+                new DataPoint(d6, 1),
+                new DataPoint(d7, 2)
+        });
+
+        graph.addSeries(series2);
+        series2.setDrawDataPoints(true);
+        series2.setColor(Color.RED);
+
+
+        // set date label formatter
+        graph.getGridLabelRenderer().setLabelFormatter(new DateAsXAxisLabelFormatter(getApplicationContext()));
+        graph.getGridLabelRenderer().setNumHorizontalLabels(5); // only 5 because of the space
+
+        // set manual x bounds to have nice steps
+        graph.getViewport().setMinX(d2.getTime());
+        graph.getViewport().setMaxX(d7.getTime());
+        graph.getViewport().setXAxisBoundsManual(true);
+        graph.getViewport().setScalable(true);
+        graph.getViewport().setScrollable(true);
+
+        // as we use dates as labels, the human rounding to nice readable numbers
+        // is not necessary
+        graph.getGridLabelRenderer().setHumanRounding(false);
+
+
+
+        //PIE CHART
+
+        PieChartView pieChart = (PieChartView) findViewById(R.id.chart);
+        PieChartData pieData;
+
+        List<SliceValue> values = new ArrayList<SliceValue>();
+        for (int i = 0; i < 3; ++i) {
+            SliceValue sliceValue = new SliceValue((float) Math.random() * 30 + 15, ChartUtils.pickColor());
+            values.add(sliceValue);
+        }
+
+        pieData = new PieChartData(values);
+        pieData.setHasLabels(true);
+        pieData.setHasLabelsOnlyForSelected(false);
+        pieData.setHasLabelsOutside(false);
+        pieData.setHasCenterCircle(false);
+
+        pieChart.setPieChartData(pieData);
+        pieChart.setChartRotationEnabled(false);
+
+    }
+}

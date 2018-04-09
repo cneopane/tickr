@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="About Us" android:id="@+id/setting"></item>
+    <item android:title="HomePage" android:actionLayout="@layout/activity_home" android:id="@id/setting1"></item>
+    <item android:title="MainPage" android:actionLayout="@layout/activity_main" android:id="@id/setting2"></item>
+    <item android:title="CryptoCurrency" android:actionLayout="@layout/activity_home" android:id="@id/setting3"></item>
+    <item android:title="Bank" android:actionLayout="@layout/activity_main" android:id="@id/setting4"></item>
+
+</menu>
