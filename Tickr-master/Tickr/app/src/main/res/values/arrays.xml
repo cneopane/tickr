@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ChooseCoin">Choose Coin:</string>
+    <string name="ChooseCoin1">Current Coin Price</string>
+    <string name="NumCoin">Enter Number of Coin:</string>
+</resources>

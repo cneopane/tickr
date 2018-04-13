@@ -11,8 +11,9 @@
         android:id="@+id/profile"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="256dp"
+        android:layout_marginTop="16dp"
         android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -38,10 +39,18 @@
                 android:layout_width="127dp"
                 android:layout_height="40dp"
                 android:ems="10"
-                android:text="@string/ChooseStock"
+                android:text="@string/ChooseCoin"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
                 tools:layout_editor_absoluteX="20dp"
                 tools:layout_editor_absoluteY="314dp" />
 
+            <Spinner
+                android:id="@+id/DropDown"
+                android:layout_width="204dp"
+                android:layout_height="41dp"
+                android:background="#83B692"
+                android:entries="@array/DropDown1" />
 
 
         </LinearLayout>
@@ -62,27 +71,31 @@
             tools:layout_constraintTop_creator="1">
 
             <TextView
-                android:id="@+id/ChooseStock1"
+                android:id="@+id/ChooseBitCoin1"
                 android:layout_width="127dp"
                 android:layout_height="40dp"
                 android:ems="10"
-                android:text="@string/ChooseStock1"
+                android:text="@string/ChooseCoin1"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
                 tools:layout_editor_absoluteX="20dp"
                 tools:layout_editor_absoluteY="314dp" />
 
             <TextView
                 android:id="@+id/StockPrice"
-                android:layout_width="368dp"
-                android:layout_height="wrap_content"
+                android:layout_width="237dp"
+                android:layout_height="73dp"
                 android:gravity="center"
                 android:orientation="vertical"
                 android:text="\?"
+                android:textColor="#FFFFFF"
                 android:textSize="18dp"
                 android:textStyle="bold"
                 tools:layout_editor_absoluteX="62dp"
                 tools:layout_editor_absoluteY="40dp"
 
                 />
+
         </LinearLayout>
 
         <LinearLayout
@@ -104,7 +117,9 @@
                 android:layout_height="54dp"
                 android:layout_weight="0.95"
                 android:ems="10"
-                android:text="@string/NumStock"
+                android:text="@string/NumCoin"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
                 tools:layout_editor_absoluteX="20dp"
                 tools:layout_editor_absoluteY="314dp" />
 
@@ -113,7 +128,8 @@
                 android:layout_width="181dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="number" />
+                android:inputType="numberDecimal"
+                android:textColor="#FFFFFF" />
 
         </LinearLayout>
 
@@ -123,25 +139,71 @@
 
             <Button
                 android:id="@+id/FindStock"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="FindStockPrices" />
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center_horizontal"
+                android:background="#83B692"
+                android:text="Calculate Stock Price" />
 
             <TextView
                 android:id="@+id/StockDrop"
                 android:layout_width="368dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="50dp"
-                android:layout_marginTop="50dp"
+                android:layout_height="38dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="108dp"
                 android:gravity="center"
                 android:orientation="vertical"
                 android:text="Your Total Worth"
+                android:textColor="#FFFFFF"
                 android:textSize="18dp"
                 android:textStyle="bold"
                 tools:layout_editor_absoluteX="62dp"
-                tools:layout_editor_absoluteY="40dp"
+                tools:layout_editor_absoluteY="40dp" />
 
-                />
+            <Button
+                android:id="@+id/Bank"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="15dp"
+                android:layout_toEndOf="@+id/Stock"
+                android:background="#83B692"
+                android:bottomRightRadius="8dp"
+                android:text="Bank"
+                android:textColor="#000066"
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="178dp" />
+
+            <Button
+                android:id="@+id/Stock"
+                android:layout_width="139dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center_horizontal"
+                android:background="#ED254E"
+                android:text="Stock"
+                android:textColor="#FFFFFF"
+                tools:layout_editor_absoluteX="5dp"
+                tools:layout_editor_absoluteY="285dp" />
+
+            <Button
+                android:id="@+id/Home"
+                android:layout_width="122dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
+                android:layout_gravity="center_horizontal"
+                android:background="#0066FF"
+                android:text="Home"
+                android:textColor="#FFFFFF"
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="231dp" />
+
         </RelativeLayout>
 
     </LinearLayout>

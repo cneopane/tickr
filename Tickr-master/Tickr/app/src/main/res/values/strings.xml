@@ -12,4 +12,9 @@
     <item>Google</item>
     <item>IBM</item>
 </string-array>
+    <string-array name="DropDown1">
+        <item>BitCoin</item>
+        <item>Ethereum</item>
+        <item>Ripple</item>
+    </string-array>
 </resources>

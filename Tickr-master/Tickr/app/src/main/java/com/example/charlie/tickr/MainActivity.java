@@ -22,7 +22,10 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.HashMap;
 
 
 /**
@@ -34,8 +37,13 @@ public class MainActivity extends AppCompatActivity {
     FirebaseAuth mAuth;
     private final static int RC_SIGN_IN = 2001;
     GoogleApiClient mGoogleApiClient;
-
     FirebaseAuth.AuthStateListener mAuthListener;
+    boolean isNew;
+    private DatabaseReference mDatabase;
+
+
+    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    String uid = user.getUid();
 
 
     protected void onStart(){
@@ -125,6 +133,33 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+                            isNew = task.getResult().getAdditionalUserInfo().isNewUser();
+                            Log.d("MyTAG", "onComplete: " + (isNew ? "new user" : "old user"));
+
+                            if(isNew) {
+                                //MAKE THE HASHMAP HERE
+
+                                mDatabase = FirebaseDatabase.getInstance().getReference();
+
+                                HashMap<String, String> info = new HashMap<String, String>();
+                                info.put("email", user.getEmail());
+                                info.put("name", user.getDisplayName());
+                                mDatabase.child(uid).child("info").setValue(info);
+
+                                HashMap<String, String> bank = new HashMap<String, String>();
+                                bank.put("checking", String.valueOf(0.00));
+                                bank.put("savings", String.valueOf(0.00));
+                                bank.put("total", String.valueOf(0.00));
+                                mDatabase.child(uid).child("portfolios").child("bank").setValue(bank);
+
+                                HashMap<String, String> coins = new HashMap<String, String>();
+                                coins.put("total", String.valueOf(0.00));
+                                mDatabase.child(uid).child("portfolios").child("coins").setValue(coins);
+
+                                HashMap<String, String> stocks = new HashMap<String, String>();
+                                stocks.put("total", String.valueOf(0.00));
+                                mDatabase.child(uid).child("portfolios").child("stocks").setValue(stocks);
+                            }
                             // Sign in success, update UI with the signed-in user's information
                             Log.d("TAG", "signInWithCredential:success");
 
