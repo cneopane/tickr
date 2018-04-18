@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Tickr</string>
+    <string name="ChooseStock">Choose Stock:</string>
+    <string name="NumStock">Enter Number of Stock:</string>
+    <string name="ChooseStock1">Current Stock Price:</string>
+    <string name="cryptocurrency">Cryptocurrency</string>
+    <string name="stock">Stock</string>
+    <string name="home">Home</string>
+    <string name="name_display_here">Name Display Here</string>
+    <string-array name="DropDown">
+    <item>Apple</item>
+    <item>Microsoft</item>
+    <item>Amazon</item>
+    <item>Dell</item>
+    <item>Delta</item>
+    <item>Google</item>
+    <item>IBM</item>
+</string-array>
+    <string-array name="DropDown1">
+        <item>BitCoin</item>
+        <item>Ethereum</item>
+        <item>Ripple</item>
+    </string-array>
+</resources>
